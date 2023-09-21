@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Results summary component</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Hanken+Grotesk:wght@500;700;800&family=Open+Sans:wght@400;700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,200&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      body {
+        font-family: "Hanken Grotesk", sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+
+      .content {
+        background-color: white;
+        display: flex;
+        border-radius: 25px;
+        box-shadow: 0 0 10px #ddd;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      @media (max-width: 767px) {
+        .content {
+          flex-direction: column;
+          width: 100%;
+          align-items: center;
+          top: 44%;
+        }
+      }
+      .Result {
+        text-align: center;
+        background-color: hsl(252, 100%, 60%);
+        border-radius: 25px;
+        width: 300px;
+      }
+      @media (max-width: 767px) {
+        .Result {
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 25px;
+          border-bottom-left-radius: 25px;
+          width: 100%;
+        }
+      }
+      .Result .gray {
+        margin: 0;
+        margin-bottom: 25px;
+        color: hsl(241, 100%, 89%);
+        margin-top: 25px;
+      }
+      .Result div {
+        background-color: hsl(256deg 71.9% 46.1% / 40%);
+        border-radius: 50%;
+        margin: auto;
+        padding: 10px 25px;
+        width: 150px;
+        height: 150px;
+      }
+
+      .Result div h3 {
+        margin: 10px 10px 0 10px;
+        color: hsl(0, 0%, 100%);
+        font-size: 60px;
+        padding: 5px 5px 0 5px;
+      }
+      .Result div span {
+        display: block;
+        color: hsl(224.2, 10.7%, 65.3%);
+        padding: 0;
+        padding: 0 5px 20px 5px;
+      }
+      .Result .great {
+        margin: 20px 0 0;
+        color: hsl(0, 0%, 100%);
+        font-size: 20px;
+      }
+      .Result p {
+        width: 250px;
+        color: hsl(241, 100%, 89%);
+        padding: 10px 0 35px;
+        margin: auto;
+      }
+      @media (max-width: 767px) {
+        .Result p {
+          width: 79%;
+        }
+      }
+      .summary {
+        width: 300px;
+        padding: 20px;
+      }
+      @media (max-width: 767px) {
+        .summary {
+          width: 90%;
+        }
+      }
+      .summary h3 {
+        margin-bottom: 20px;
+        font-size: 18px;
+        color: #000000a8;
+      }
+      .summary .yellow,
+      .summary .red,
+      .summary .green,
+      .summary .blue {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 12px;
+      }
+      .summary .red {
+        background-color: hsla(0, 100%, 67.1%, 5%);
+      }
+      .summary .yellow {
+        background-color: hsla(38.8, 100%, 56.1%, 4%);
+      }
+      .summary .green {
+        background-color: hsl(166, 100%, 37%, 5%);
+      }
+      .summary .blue {
+        background-color: hsl(234, 85%, 45%, 5%);
+      }
+      .summary .red > div,
+      .summary .yellow > div,
+      .summary .green > div,
+      .summary .blue > div {
+        display: flex;
+        align-items: center;
+      }
+      .summary div > img {
+        margin-right: 5px;
+      }
+
+      .summary .red > div span {
+        color: hsl(0, 100%, 67%);
+      }
+      .summary .red span > span,
+      .summary .yellow span > span,
+      .summary .green span > span,
+      .summary .blue span > span {
+        color: hsl(224, 30%, 27%);
+      }
+      .summary .yellow > div span {
+        color: hsl(39, 100%, 56%);
+      }
+      .summary .green > div span {
+        color: hsl(166, 100%, 37%);
+      }
+      .summary .blue > div span {
+        color: hsl(234, 85%, 45%);
+      }
+      .content a {
+        text-decoration: none;
+        display: block;
+
+        background-color: hsl(224, 30%, 27%);
+        color: white;
+        padding: 12px 15px;
+        border-radius: 20px;
+        margin: 22px auto;
+        width: 165px;
+        text-align: center;
+        width: 250px;
+      }
+      .content a:hover {
+        background-color: hsl(252, 100%, 60%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="Result">
+        <h3 class="gray">Your Result</h3>
+        <div>
+          <h3>76</h3>
+          <span>of 100</span>
+        </div>
+        <h3 class="great">Great</h3>
+        <p>
+          You scored higher than 65% of the people who have taken these tests.
+        </p>
+      </div>
+      <div class="summary">
+        <h3>Summary</h3>
+        <div class="red">
+          <div>
+            <img src="assets/images/icon-reaction.svg" alt="" />
+            <span>Reaction</span>
+          </div>
+
+          <span> 80 <span>/ 100</span></span>
+        </div>
+        <div class="yellow">
+          <div>
+            <img src="assets/images/icon-memory.svg" alt="" />
+            <span>Memory</span>
+          </div>
+
+          <span> 92 <span>/ 100</span></span>
+        </div>
+        <div class="green">
+          <div>
+            <img src="assets/images/icon-verbal.svg" alt="" />
+            <span>Verbal</span>
+          </div>
+
+          <span> 61 <span>/ 100</span></span>
+        </div>
+        <div class="blue">
+          <div>
+            <img src="assets/images/icon-visual.svg" alt="" />
+            <span>Visual</span>
+          </div>
+
+          <span> 72 <span>/ 100</span></span>
+        </div>
+        <a href="#">Continue</a>
+      </div>
+    </div>
+  </body>
+</html>
